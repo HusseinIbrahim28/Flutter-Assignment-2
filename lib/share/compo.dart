@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 
 Widget MyTextFormField({
   required String labelText,
+  required TextEditingController controller,
   required IconData prefixicon,
   required double padding,
   required TextInputType keyboardType,
   IconData? suffixIcon,
   bool obscureText = false,
+  required String? Function(String?)? validator,
 }) {
   return Padding(
     padding: EdgeInsets.all(padding),
     child: TextFormField(
       keyboardType: keyboardType,
       obscureText: obscureText,
+      controller: controller,
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(15.0),
         ),
         labelText: labelText,
         prefixIcon: Icon(prefixicon),
@@ -27,6 +30,7 @@ Widget MyTextFormField({
                 ))
             : null,
       ),
+      validator: validator,
     ),
   );
 }
